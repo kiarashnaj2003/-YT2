@@ -4,16 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       youtube_urls:
-        description: ' 🔗 آدرس ویدیو یوتیوب (چند آدرس با فاصله) '
+        description: ' 🔗 url or urls with space '
         required: true
         type: string
       download_subtitles:
-        description: '📝 دانلود زیرنویس فارسی و انگلیسی'
+        description: '📝 download subtitle (fa & en)'
         required: false
         default: false
         type: boolean
       quality:
-        description: '🎬 کیفیت'
+        description: '🎬 quality'
         required: false
         default: 'best'
         type: choice
@@ -26,7 +26,7 @@ on:
           - 480
           - audio
       password:
-        description: '🔒رمز (اختیاری)'
+        description: '🔒password (optional)'
         required: false
         default: ''
         type: string
