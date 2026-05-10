@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       youtube_urls:
-        description: ' 🔗 url or urls with space '
+        description: ' 🔗 url or url's with space '
         required: true
         type: string
       download_subtitles:
