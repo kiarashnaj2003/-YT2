@@ -1,4 +1,4 @@
-name: 01- 💾 You tube Downloader
+name: 01- 💾 دانلود یوتیوب
 
 on:
   workflow_dispatch:
