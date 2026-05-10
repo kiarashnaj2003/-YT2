@@ -1,5 +1,6 @@
 <div align="center">
    <img src="https://raw.githubusercontent.com/nikzad-avasam/notifications/refs/heads/main/assets/youtube-icon.gif" width="250" alt="wide-2" />
+   <img src="https://raw.githubusercontent.com/nikzad-avasam/notifications/refs/heads/main/assets/notification.jpg">
 </div>
 
 # 🪄 دانلودر یوتیوب ( نسخه ۲ )
