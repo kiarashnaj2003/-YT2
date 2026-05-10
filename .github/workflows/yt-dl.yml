@@ -4,16 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       youtube_urls:
-        description: ' 🔗 url or url's with space '
+        description: ' 🔗 URL or URLS with space :  '
         required: true
         type: string
       download_subtitles:
-        description: '📝 download subtitle (fa & en)'
+        description: '📝 Download subtitle (fa & en) : '
         required: false
         default: false
         type: boolean
       quality:
-        description: '🎬 quality'
+        description: '🎬 Quality : '
         required: false
         default: 'best'
         type: choice
@@ -26,7 +26,7 @@ on:
           - 480
           - audio
       password:
-        description: '🔒password (optional)'
+        description: '🔒password (optional) : '
         required: false
         default: ''
         type: string
