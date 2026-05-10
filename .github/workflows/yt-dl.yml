@@ -1383,7 +1383,7 @@ jobs:
                 cp -r "$BACKUP_DIR"/* videos/ 2>/dev/null || true
 
                 for BF in "${BATCH_FILES[@]}"; do
-                  git add "$BF" 2>/dev/null || true
+                  git add -f "$BF" 2>/dev/null || true
                 done
 
                 if ! git diff --cached --quiet 2>/dev/null; then
@@ -1404,7 +1404,7 @@ jobs:
                       mkdir -p videos
                       cp -r "$BACKUP_DIR"/* videos/ 2>/dev/null || true
                       for BF in "${BATCH_FILES[@]}"; do
-                        git add "$BF" 2>/dev/null || true
+                        git add -f "$BF" 2>/dev/null || true
                       done
                       if ! git diff --cached --quiet 2>/dev/null; then
                         git commit -m "[AVASAM] Add batch of $BATCH_COUNT files [skip ci]" --quiet 2>/dev/null || true
@@ -1458,7 +1458,7 @@ jobs:
                     mkdir -p videos
                     cp -r "$BACKUP_DIR"/* videos/ 2>/dev/null || true
                     for BF in "${BATCH_FILES[@]}"; do
-                      git add "$BF" 2>/dev/null || true
+                      git add -f "$BF" 2>/dev/null || true
                     done
                     if ! git diff --cached --quiet 2>/dev/null; then
                       git commit -m "[AVASAM] Add final batch [skip ci]" --quiet 2>/dev/null || true
