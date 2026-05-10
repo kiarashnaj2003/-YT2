@@ -1,19 +1,19 @@
-name: 01- 💾 دانلود از یو تیوب
+name: 01- 💾 Download You tube
 
 on:
   workflow_dispatch:
     inputs:
       youtube_urls:
-        description: ' 🔗 آدرس ویدیو یوتیوب (چند آدرس با فاصله) '
+        description: ' 🔗 url of video (multi url's with SPACE):'
         required: true
         type: string
       download_subtitles:
-        description: '📝 دانلود زیرنویس فارسی و انگلیسی'
+        description: '📝 Download subtitle(fa-en):'
         required: false
         default: false
         type: boolean
       quality:
-        description: '🎬 کیفیت'
+        description: '🎬 Quality:'
         required: false
         default: 'best'
         type: choice
@@ -26,7 +26,7 @@ on:
           - 480
           - audio
       password:
-        description: '🔒رمز (اختیاری)'
+        description: '🔒 Password (Optional)'
         required: false
         default: ''
         type: string
@@ -39,13 +39,13 @@ jobs:
       contents: write
 
     steps:
-      - name: بررسی اولیه
+      - name: ✅ checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: تنظیم گیت برای فایلای بزرگ
+      - name: 👨🏻‍💻 setting git for large files
         run: |
           git config --global http.postBuffer 524288000
           git config --global http.maxRequestBuffer 100M
@@ -57,7 +57,7 @@ jobs:
           git config user.email "github-actions@github.com"
           echo "Git configured for large file handling"
 
-      - name: شروع کانتینر
+      - name: 📦 start container
         run: |
           echo "Starting Cloudflare WARP container..."
 
@@ -98,7 +98,7 @@ jobs:
             echo "Response: $FINAL"
           fi
 
-      - name: نصب پیش نیازها
+      - name: ⚙️ install dependencies  
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-pip ffmpeg zip p7zip-full curl jq bc unzip
@@ -112,7 +112,7 @@ jobs:
 
           pip3 install --upgrade yt-dlp
 
-      - name: دانلود تنظیمات
+      - name: 🛠️ download setups 
         env:
           YT_URLS: ${{ github.event.inputs.youtube_urls }}
           YT_QUALITY: ${{ github.event.inputs.quality }}
@@ -336,7 +336,7 @@ jobs:
           # Save URL list (newline separated)
           printf "%s\n" "${URL_LIST[@]}" > /tmp/yt_urls.txt
 
-      - name: دانلود ویدیو یا ویدیوها
+      - name: 🎬 download video 
         run: |
           FORMAT=$(cat /tmp/yt_format.txt)
           QUALITY=$(cat /tmp/yt_quality.txt)
@@ -885,7 +885,7 @@ jobs:
       # Thumbnails are downloaded together with videos using --write-thumbnail flag
       # This eliminates the need for a separate step and avoids re-triggering bot detection
 
-      - name: دانلود زیرنویس
+      - name: 💬 download subtitle
         if: ${{ github.event.inputs.download_subtitles == 'true' }}
         run: |
           # ──────────────────────────────────────────────────────────────────────
@@ -1214,13 +1214,13 @@ jobs:
           echo "✅ Subtitle step completed - any failures were handled gracefully"
           exit 0
 
-      - name: متوقف کردن کانتینر
+      - name: 📦 stop container
         if: always()
         run: |
           docker stop warp || true
           docker rm warp || true
 
-      - name: ذخیره سازی نهایی
+      - name: 💾 save (commit)
         run: |
           BRANCH="${GITHUB_REF_NAME}"
           REPO_OWNER="${{ github.repository_owner }}"
