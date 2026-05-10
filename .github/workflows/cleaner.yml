@@ -1,12 +1,12 @@
-name: 02- 🗑 حذف ویدیوها
+name: 02- 🗑 Delete all videos
 
 on:
   workflow_dispatch:
     inputs:
       warning:
-        description: '⚠️  هشدار با زدن دکمه ی زیر تمام ویدیوهای شما حذف و پوشه ی ویدیوها مجدد بصورت خالی ساخته میشود'
+        description: '⚠️ WARNING : this delete all videos downloaded.'
         required: false
-        default: 'دکمه سبز رو بزنید شروع میشه'
+        default: 'for start deleting press run workflow'
 
 jobs:
   delete:
