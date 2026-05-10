@@ -6,7 +6,7 @@ on:
       warning:
         description: '⚠️  هشدار با زدن دکمه ی زیر تمام ویدیوهای شما حذف و پوشه ی ویدیوها مجدد بصورت خالی ساخته میشود'
         required: false
-        default: 'Read this warning before proceeding'
+        default: 'دکمه سبز رو بزنید شروع میشه'
 
 jobs:
   delete:
