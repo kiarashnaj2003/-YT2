@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="https://raw.githubusercontent.com/nikzad-avasam/youtube-dl/refs/heads/main/video-icon.gif" width="250" alt="wide-2" />
+   <img src="video-icon.gif" width="250" alt="wide-2" />
 </div>
 
 # 🪄 دانلودر یوتیوب
