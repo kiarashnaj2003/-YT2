@@ -8,12 +8,12 @@ on:
         required: true
         type: string
       download_subtitles:
-        description: '📝 Download subtitles (English & Persian)'
+        description: '📝 دانلود زیرنویس فارسی و انگلیسی'
         required: false
         default: false
         type: boolean
       quality:
-        description: '🎬 Video quality'
+        description: '🎬 کیفیت'
         required: false
         default: 'best'
         type: choice
@@ -26,7 +26,7 @@ on:
           - 480
           - audio
       password:
-        description: '🔒 Password for zip files (optional)'
+        description: '🔒رمز (اختیاری)'
         required: false
         default: ''
         type: string
