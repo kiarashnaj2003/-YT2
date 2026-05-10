@@ -1,10 +1,10 @@
-name: 01- 💾 دانلود یوتیوب
+name: 01- 💾 دانلود از یو تیوب
 
 on:
   workflow_dispatch:
     inputs:
       youtube_urls:
-        description: '🔗 آدرس ویدیو یوتیوب - با فاصله چند آدرس '
+        description: ' 🔗 آدرس ویدیو یوتیوب (چند آدرس با فاصله) '
         required: true
         type: string
       download_subtitles:
