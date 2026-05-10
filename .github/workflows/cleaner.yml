@@ -1,10 +1,10 @@
-name: 02- 🗑 Clean Videos folder
+name: 02- 🗑 حذف ویدیوها
 
 on:
   workflow_dispatch:
     inputs:
       warning:
-        description: '⚠️ WARNING: This will DELETE the entire videos/ folder and recreate it. Click "Run workflow" only if you are sure.'
+        description: '⚠️  هشدار با زدن دکمه ی زیر تمام ویدیوهای شما حذف و پوشه ی ویدیوها مجدد بصورت خالی ساخته میشود'
         required: false
         default: 'Read this warning before proceeding'
 
