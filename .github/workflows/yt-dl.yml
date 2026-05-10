@@ -1253,13 +1253,13 @@ jobs:
                 echo ""
                 echo "> No videos downloaded yet."
               } > videos/README.md
-              git add videos/README.md
+              git add -f videos/README.md
               if ! git diff --cached --quiet; then
-                git commit -m "[AVASAM] Initialize videos folder [skip ci]"
+                git commit --amend -m "[AVASAM] Videos update [skip ci]" 2>/dev/null || git commit -m "[AVASAM] Videos update [skip ci]"
                 PUSH_RETRY=0
                 while [ $PUSH_RETRY -lt 5 ]; do
                   PUSH_RETRY=$((PUSH_RETRY + 1))
-                  if timeout 60 git push origin HEAD:"$BRANCH"; then
+                  if timeout 60 git push --force origin HEAD:"$BRANCH"; then
                     echo "videos/ folder initialized and pushed."
                     break
                   else
@@ -1343,10 +1343,10 @@ jobs:
               fi
 
               FILENAME=$(basename "$FILE_PATH")
-              git commit -m "[AVASAM] Add: $FILENAME [skip ci]" --quiet 2>/dev/null || true
+              git commit --amend -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || git commit -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || true
 
               echo "    Push attempt $RETRY/$MAX_RETRIES..."
-              if timeout 120 git push origin HEAD:"$BRANCH" 2>&1; then
+              if timeout 120 git push --force origin HEAD:"$BRANCH" 2>&1; then
                 echo "    SUCCESS!"
                 return 0
               else
@@ -1387,13 +1387,13 @@ jobs:
                 done
 
                 if ! git diff --cached --quiet 2>/dev/null; then
-                  git commit -m "[AVASAM] Add batch of $BATCH_COUNT files [skip ci]" --quiet 2>/dev/null || true
+                  git commit --amend -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || git commit -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || true
 
                   local PUSH_RETRY=0
                   local PUSH_SUCCESS=false
                   while [ $PUSH_RETRY -lt 5 ]; do
                     PUSH_RETRY=$((PUSH_RETRY + 1))
-                    if timeout 180 git push origin HEAD:"$BRANCH" 2>&1; then
+                    if timeout 180 git push --force origin HEAD:"$BRANCH" 2>&1; then
                       PUSH_SUCCESS=true
                       echo "    Batch pushed successfully!"
                       break
@@ -1407,7 +1407,7 @@ jobs:
                         git add -f "$BF" 2>/dev/null || true
                       done
                       if ! git diff --cached --quiet 2>/dev/null; then
-                        git commit -m "[AVASAM] Add batch of $BATCH_COUNT files [skip ci]" --quiet 2>/dev/null || true
+                        git commit --amend -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || git commit -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || true
                       fi
                       sleep $((3 + RANDOM % 7))
                     fi
@@ -1438,16 +1438,16 @@ jobs:
               cp -r "$BACKUP_DIR"/* videos/ 2>/dev/null || true
 
               for BF in "${BATCH_FILES[@]}"; do
-                git add "$BF" 2>/dev/null || true
+                git add -f "$BF" 2>/dev/null || true
               done
 
               if ! git diff --cached --quiet 2>/dev/null; then
-                git commit -m "[AVASAM] Add final batch [skip ci]" --quiet 2>/dev/null || true
+                git commit --amend -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || git commit -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || true
 
                 local PUSH_RETRY=0
                 while [ $PUSH_RETRY -lt 5 ]; do
                   PUSH_RETRY=$((PUSH_RETRY + 1))
-                  if timeout 180 git push origin HEAD:"$BRANCH" 2>&1; then
+                  if timeout 180 git push --force origin HEAD:"$BRANCH" 2>&1; then
                     echo "    Final batch pushed successfully!"
                     break
                   else
@@ -1515,17 +1515,17 @@ jobs:
           if [ $TOTAL_SIZE_MB -lt 100 ]; then
             echo "Small upload - pushing all at once..."
 
-            git add -A videos/
+            git add -fA videos/
             regenerate_master_readme
-            git add videos/README.md
+            git add -f videos/README.md
 
             if ! git diff --cached --quiet; then
-              git commit -m "[AVASAM] YouTube download [skip ci]"
+              git commit --amend -m "[AVASAM] Videos update [skip ci]" 2>/dev/null || git commit -m "[AVASAM] Videos update [skip ci]"
 
               PUSH_RETRY=0
               while [ $PUSH_RETRY -lt 10 ]; do
                 PUSH_RETRY=$((PUSH_RETRY + 1))
-                if timeout 300 git push origin HEAD:"$BRANCH"; then
+                if timeout 300 git push --force origin HEAD:"$BRANCH"; then
                   echo "Push successful!"
                   break
                 else
@@ -1535,11 +1535,11 @@ jobs:
                   git reset --hard origin/"$BRANCH"
                   mkdir -p videos
                   cp -r "$BACKUP_DIR"/* videos/
-                  git add -A videos/
+                  git add -fA videos/
                   regenerate_master_readme
-                  git add videos/README.md
+                  git add -f videos/README.md
                   if ! git diff --cached --quiet; then
-                    git commit -m "[AVASAM] YouTube download [skip ci]"
+                    git commit --amend -m "[AVASAM] Videos update [skip ci]" 2>/dev/null || git commit -m "[AVASAM] Videos update [skip ci]"
                   fi
                 fi
               done
@@ -1559,15 +1559,15 @@ jobs:
             cp -r "$BACKUP_DIR"/* videos/ 2>/dev/null || true
 
             regenerate_master_readme
-            git add videos/README.md
+            git add -f videos/README.md
 
             if ! git diff --cached --quiet 2>/dev/null; then
-              git commit -m "[AVASAM] Update video list [skip ci]" --quiet 2>/dev/null || true
+              git commit --amend -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || git commit -m "[AVASAM] Videos update [skip ci]" --quiet 2>/dev/null || true
 
               PUSH_RETRY=0
               while [ $PUSH_RETRY -lt 5 ]; do
                 PUSH_RETRY=$((PUSH_RETRY + 1))
-                if timeout 60 git push origin HEAD:"$BRANCH" 2>&1; then
+                if timeout 60 git push --force origin HEAD:"$BRANCH" 2>&1; then
                   echo "Master README pushed!"
                   break
                 else
