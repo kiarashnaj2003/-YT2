@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="https://raw.githubusercontent.com/nikzad-avasam/notifications/refs/heads/main/assets/youtube-icon.gif" width="250" alt="wide-2" />
+   <img src="https://raw.githubusercontent.com/nikzad-avasam/notifications/refs/heads/main/assets/youtube-icon.gif" width="250" alt="دانلودر یوتیوب با اینترنت ملی " />
    <img src="https://raw.githubusercontent.com/nikzad-avasam/notifications/refs/heads/main/assets/notification.jpg">
 </div>
 
@@ -49,7 +49,7 @@
 ## ❓ حل مشکل ساختن یا بازیابی اکانت گیتهاب
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/nikzad-avasam/youtube-dl/refs/heads/main/github-icon.jpg" width="250" alt="wide-2" />
+  <img src="https://raw.githubusercontent.com/nikzad-avasam/notifications/refs/heads/main/assets/github-icon.jpg" width="250" alt="wide-2" />
 </div>
 
 اگر مشکل ساختن اکانت جدید یا بازیابی اکانت قدیمی گیتهاب برای شما هم پیش آمده است راه چاره خریدن یک اکانت سالم میباشد اکانت در ۱۰ الی ۱۵ دقیقه ساخته و تحویل داده میشود همچنین با پرداخت مبلغ زیر اگر تمایل داشته باشید بجای ساختن اکانت جدید میتوانیم اکانت قدیمی شما را نیزبازیابی کنیم. بعد از خرید دستورالعمل و نحوه ی استفاده برای شما باز میشود:
