@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       youtube_urls:
-        description: '🔗 YouTube video URL(s) — separate multiple URLs with spaces'
+        description: '🔗 آدرس ویدیو یوتیوب - با فاصله چند آدرس '
         required: true
         type: string
       download_subtitles:
