@@ -39,13 +39,13 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout
+      - name: بررسی اولیه
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Configure Git for Large Files
+      - name: تنظیم گیت برای فایلای بزرگ
         run: |
           git config --global http.postBuffer 524288000
           git config --global http.maxRequestBuffer 100M
@@ -57,7 +57,7 @@ jobs:
           git config user.email "github-actions@github.com"
           echo "Git configured for large file handling"
 
-      - name: Start WARP Container
+      - name: شروع کانتینر
         run: |
           echo "Starting Cloudflare WARP container..."
 
@@ -98,7 +98,7 @@ jobs:
             echo "Response: $FINAL"
           fi
 
-      - name: Install Dependencies
+      - name: نصب پیش نیازها
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-pip ffmpeg zip p7zip-full curl jq bc unzip
@@ -112,7 +112,7 @@ jobs:
 
           pip3 install --upgrade yt-dlp
 
-      - name: Download Setup (functions & config)
+      - name: دانلود تنظیمات
         env:
           YT_URLS: ${{ github.event.inputs.youtube_urls }}
           YT_QUALITY: ${{ github.event.inputs.quality }}
@@ -336,7 +336,7 @@ jobs:
           # Save URL list (newline separated)
           printf "%s\n" "${URL_LIST[@]}" > /tmp/yt_urls.txt
 
-      - name: Download YouTube Video(s)
+      - name: دانلود ویدیو یا ویدیوها
         run: |
           FORMAT=$(cat /tmp/yt_format.txt)
           QUALITY=$(cat /tmp/yt_quality.txt)
@@ -885,7 +885,7 @@ jobs:
       # Thumbnails are downloaded together with videos using --write-thumbnail flag
       # This eliminates the need for a separate step and avoids re-triggering bot detection
 
-      - name: Download Subtitles
+      - name: دانلود زیرنویس
         if: ${{ github.event.inputs.download_subtitles == 'true' }}
         run: |
           # ──────────────────────────────────────────────────────────────────────
@@ -1214,13 +1214,13 @@ jobs:
           echo "✅ Subtitle step completed - any failures were handled gracefully"
           exit 0
 
-      - name: Stop WARP Container
+      - name: متوقف کردن کانتینر
         if: always()
         run: |
           docker stop warp || true
           docker rm warp || true
 
-      - name: Incremental Commit & Push
+      - name: ذخیره سازی نهایی
         run: |
           BRANCH="${GITHUB_REF_NAME}"
           REPO_OWNER="${{ github.repository_owner }}"
